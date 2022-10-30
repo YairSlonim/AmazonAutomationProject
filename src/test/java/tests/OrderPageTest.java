@@ -2,13 +2,13 @@ package tests;
 
 import base.BaseClass;
 import dataprovider.DataProviders;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AddToCartPage;
 import pages.HomePage;
 import pages.CartPage;
 import pages.SearchResultPage;
-
 
 public class OrderPageTest extends BaseClass {
 
@@ -18,6 +18,7 @@ public class OrderPageTest extends BaseClass {
     private CartPage cartPage;
 
     @Test(dataProvider = "getProduct", dataProviderClass = DataProviders.class)
+    @Description("Adds products to the cart and then verifies that the final price is correct.")
     public void verifyTotalPrice(String productName, String size, String qty){
         homePage = new HomePage();
         searchResultPage = homePage.searchProduct(productName);

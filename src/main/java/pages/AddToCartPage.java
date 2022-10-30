@@ -8,9 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.ByteArrayInputStream;
-
 import static driverActions.Actions.*;
 
 public class AddToCartPage extends BaseClass {
@@ -35,15 +33,13 @@ public class AddToCartPage extends BaseClass {
     @Step("enter product size")
     public void selectSize(String size1){
         selectFromDropDownListByVisibileText(size,size1);
-        Allure.addAttachment("fill quantity field", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
+        Allure.addAttachment("fill size field", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
 
     @Step("click on add to cart button")
     public CartPage clickOnAddToCart(){
         click(addToCartBtn);
-        Allure.addAttachment("cart", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
+        Allure.addAttachment("added to cart message", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
         return new CartPage();
     }
-
-
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class DataProviders {
      NewExcelLibrary  obj = new  NewExcelLibrary();
-//Class --> LoginPageTest,HomePageTest Test Case--> loginTest, wishListTest, orderHistoryandDetailsTest
+
     @DataProvider(name = "credentials")
     public Object[][] getCredentials() {
         int rows = obj.getRowCount("Credentials");
@@ -26,7 +26,6 @@ public class DataProviders {
         return data;
     }
 
-    //Class --> AccountCreationPage  Test Case--> verifyCreateAccountPageTest
     @DataProvider(name = "username")
     public Object[][] getUserName() {
         // Totals rows count
@@ -45,7 +44,6 @@ public class DataProviders {
         return data;
     }
 
-    //Class --> AddToCartPageTest, EndToEndTest,  Test Case--> addToCartTest, endToEndTest
     @DataProvider(name = "getProduct")
     public Object[][] getProduct() {
         // Totals rows count
@@ -64,7 +62,6 @@ public class DataProviders {
         return data;
     }
 
-    // Class --> SearchResultPageTest, Test Case--> productAvailabilityTest
     @DataProvider(name = "searchProduct")
     public Object[][] getProductPrice() {
         // Totals rows count
@@ -105,5 +102,4 @@ public class DataProviders {
         }
         return data;
     }
-
 }

@@ -8,10 +8,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.ByteArrayInputStream;
-
 import static driverActions.Actions.*;
+
 public class CartPage extends BaseClass {
 
     @FindBy(id = "NATC_SMART_WAGON_CONF_MSG_SUCCESS")
@@ -20,12 +19,8 @@ public class CartPage extends BaseClass {
     private WebElement proceedToCheckOutBtn;
     @FindBy(css = "span.ewc-unit-price.ewc-wider-compact-view-only > span")
     private WebElement unitPrice;
-
     @FindBy(xpath = "//span[@class='a-size-base a-color-price a-text-bold']")
     private WebElement totalPrice;
-
-    @FindBy(xpath = "//input[@name='proceedToRetailCheckout']")
-    private WebElement proceedToCheckOut;
 
     public CartPage(){
         PageFactory.initElements(getDriver(),this);

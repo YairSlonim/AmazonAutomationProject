@@ -11,7 +11,7 @@ public class HomeTest extends BaseClass {
     private HomePage homePage;
 
     @Test
-    @Description("verify the amazon home page logo.")
+    @Description("Verify the amazon home page logo.")
     public void verifyLogo(){
         homePage = new HomePage();
         boolean result = homePage.validateLogo();
@@ -19,11 +19,10 @@ public class HomeTest extends BaseClass {
     }
 
     @Test
-    @Description("verify the amazon home page title.")
+    @Description("Verify the amazon home page title.")
     public void verifyTitle() {
         homePage = new HomePage();
         String actTitle=homePage.getMyStoreTitle();
         Assert.assertEquals(actTitle, "Amazon.com. Spend less. Smile more.");
     }
-
 }

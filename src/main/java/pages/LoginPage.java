@@ -1,7 +1,6 @@
 package pages;
 
 import base.BaseClass;
-import driverActions.Actions;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
@@ -9,11 +8,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.ByteArrayInputStream;
-
 import static driverActions.Actions.*;
-import static driverActions.Actions.click;
 
 public class LoginPage extends BaseClass {
 
@@ -22,13 +18,13 @@ public class LoginPage extends BaseClass {
     @FindBy(id = "signInSubmit")
     private WebElement nextPasswordButton;
     @FindBy(xpath = "(//div[@class='a-box-inner a-alert-container'])[2]")
+    private WebElement EmptyEmailErrorMsg;
+    @FindBy(xpath = "//span[@class='a-list-item']")
     private WebElement emailErrorMsg;
     @FindBy(id = "ap_email")
     private WebElement emailInput;
     @FindBy(id = "ap_password")
     private WebElement passwordInput;
-    @FindBy(xpath = "(//div[@class='a-box-inner a-alert-container'])[2]")
-    private WebElement passwordErrorMsg;
 
     public LoginPage(){
         PageFactory.initElements( getDriver(),this);
@@ -38,8 +34,8 @@ public class LoginPage extends BaseClass {
     public void clickNextWithEmptyEmail()
     {
         click(nextEmailButton);
-        waitUntilVisibilityElementLocated(emailErrorMsg);
-        System.out.println(emailErrorMsg.getText());
+        waitUntilVisibilityElementLocated(EmptyEmailErrorMsg);
+        System.out.println(EmptyEmailErrorMsg.getText());
         Allure.addAttachment("error message after click continue with empty email", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
 
@@ -54,9 +50,9 @@ public class LoginPage extends BaseClass {
     }
 
     @Step("Delete email field value")
-    public void delete()
+    public void deleteFromField()
     {
-        removeInput(emailInput, emailInput.getAttribute("value"));
+        emailInput.clear();
         Allure.addAttachment("empty form", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
 
@@ -65,14 +61,16 @@ public class LoginPage extends BaseClass {
     {
         typeInto(username, emailInput);
         click(nextEmailButton);
-        Allure.addAttachment("click next with correct email", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
+        Allure.addAttachment("password page in login process", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
 
     @Step("Click next with correct password")
     public HomePage clickNextWithCorrectDetails(String pw)
     {
+        waitUntilVisibilityElementLocated(passwordInput);
         typeInto(pw, passwordInput);
         click(nextPasswordButton);
+        impWait();
         Allure.addAttachment("click next with correct password", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
         return new HomePage();
     }

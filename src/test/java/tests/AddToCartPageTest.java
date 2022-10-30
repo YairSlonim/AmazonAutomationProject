@@ -1,12 +1,10 @@
 package tests;
 
-
 import base.BaseClass;
 import dataprovider.DataProviders;
+import io.qameta.allure.Description;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 import pages.AddToCartPage;
 import pages.CartPage;
@@ -21,6 +19,7 @@ public class AddToCartPageTest extends BaseClass {
     private CartPage cartPage;
 
     @Test(dataProvider = "getProduct", dataProviderClass = DataProviders.class)
+    @Description("Add product to the cart and validate that the product is in the cart.")
     public void addToCartTest(String productName, String size, String qty){
         homePage = new HomePage();
         searchResultPage = homePage.searchProduct(productName);
@@ -31,5 +30,4 @@ public class AddToCartPageTest extends BaseClass {
         boolean result = cartPage.validateAddToCart();
         Assert.assertTrue(result);
     }
-
 }

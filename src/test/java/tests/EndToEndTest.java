@@ -4,9 +4,6 @@ import base.BaseClass;
 import dataprovider.DataProviders;
 import io.qameta.allure.Description;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -36,5 +33,4 @@ public class EndToEndTest extends BaseClass {
         String expectedMsg = "Select a shipping address";
         Assert.assertEquals(actualMessage, expectedMsg);
     }
-
 }

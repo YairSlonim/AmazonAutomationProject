@@ -13,21 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Actions extends BaseClass {
 
-    public void visitSite(String url)
-    {
-        getDriver().get(url);
-        getDriver().manage().window().maximize();
-    }
-
-    public static void waitUntilVisibilityElementLocated(By locator) {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
     public static void waitUntilVisibilityElementLocated(WebElement elem) {
         getWait().until(ExpectedConditions.visibilityOf(elem));
-    }
-    public static void waitUntilVisibilityElementLocated(List<WebElement> lst) {
-        getWait().until(ExpectedConditions.visibilityOfAllElements(lst));
     }
 
     public static String getText(WebElement element) {
@@ -54,6 +41,7 @@ public class Actions extends BaseClass {
     }
 
     public static void removeInput(WebElement elem, String str) {
+        System.out.println(str.length());
         for (int i = 0; i < str.length(); i++) {
             elem.sendKeys(Keys.BACK_SPACE);
         }
@@ -88,10 +76,8 @@ public class Actions extends BaseClass {
     public static boolean JSClick(WebElement ele) {
         boolean flag = false;
         try {
-            // WebElement element = driver.findElement(locator);
             JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].click();", ele);
-            // driver.executeAsyncScript("arguments[0].click();", element);
             flag = true;
         }
         catch (Exception e) {
@@ -107,18 +93,8 @@ public class Actions extends BaseClass {
         return flag;
     }
 
-    public static void selectFromDropDownListByValue(WebElement elem, String value) {
-        Select select = new Select(elem);
-        select.selectByValue(value);
-    }
-
     public static void selectFromDropDownListByVisibileText(WebElement elem, String text) {
         Select select = new Select(elem);
         select.selectByVisibleText(text);
-    }
-
-    public static void selectFromDropDownListByIndex(WebElement elem, int index) {
-        Select select = new Select(elem);
-        select.selectByIndex(index);
     }
 }

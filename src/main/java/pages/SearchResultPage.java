@@ -1,7 +1,6 @@
 package pages;
 
 import base.BaseClass;
-import driverActions.Actions;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
@@ -10,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.io.ByteArrayInputStream;
-
 import static driverActions.Actions.*;
 
 public class SearchResultPage extends BaseClass {
@@ -33,5 +31,4 @@ public class SearchResultPage extends BaseClass {
         Allure.addAttachment("addToCart page", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
         return new AddToCartPage();
     }
-
 }

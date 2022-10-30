@@ -8,9 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.io.ByteArrayInputStream;
-
 import static driverActions.Actions.*;
 
 public class RegisterPage extends BaseClass {
@@ -66,5 +64,4 @@ public class RegisterPage extends BaseClass {
         click(continueButton);
         Allure.addAttachment("continue with correct fields", new ByteArrayInputStream(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES)));
     }
-
 }

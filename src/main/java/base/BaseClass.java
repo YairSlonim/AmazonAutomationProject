@@ -9,6 +9,7 @@ import utils.Utils;
 import java.time.Duration;
 
 public class BaseClass {
+
     private static WebDriverWait wait ;
     private static WebDriver wd ;
 
@@ -29,8 +30,8 @@ public class BaseClass {
         return wait;
     }
 
-//    @AfterTest
-//    public void Teardown() {
-//        wd.quit();
-//    }
+    @AfterTest
+    public void Teardown() {
+        wd.quit();
+    }
 }
